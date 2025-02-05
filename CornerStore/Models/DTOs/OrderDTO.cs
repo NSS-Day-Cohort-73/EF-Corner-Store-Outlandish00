@@ -1,31 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CornerStore.Models;
+namespace CornerStore.Models.DTOs;
 
-public class Order
+public class OrderDTO
 {
     public int Id { get; set; }
 
     [Required]
     public int CashierId { get; set; }
-    public Cashier Cashier { get; set; }
-    public List<OrderProduct> OrderProducts { get; set; }
+    public CashierDTO Cashier { get; set; }
+    public List<OrderProductDTO> OrderProducts { get; set; }
     public decimal Total
     {
         get
         {
             decimal productPrice = 0.00M;
-            if (OrderProducts == null)
+            foreach (OrderProductDTO orderProduct in OrderProducts)
             {
-                return productPrice;
-            }
-            foreach (OrderProduct orderProduct in OrderProducts)
-            {
-                if (orderProduct.Product == null)
-                {
-                    return productPrice;
-                }
-
                 decimal productTotalPrice = orderProduct.Product.Price * orderProduct.Quantity;
                 productPrice += productTotalPrice;
             }

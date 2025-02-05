@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CornerStore.Models;
+namespace CornerStore.Models.DTOs;
 
-public class Category
+public class CategoryDTO
 {
     public int Id { get; set; }
 
     [Required]
     public string CategoryName { get; set; }
-    public List<Product> Products { get; set; }
+    public List<ProductDTO> Products { get; set; }
 }

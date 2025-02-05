@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CornerStore.Models;
+namespace CornerStore.Models.DTOs;
 
-public class Cashier
+public class CashierDTO
 {
     public int Id { get; set; }
 
@@ -19,5 +19,5 @@ public class Cashier
             return theName;
         }
     }
-    public List<Order> Orders { get; set; }
+    public List<OrderDTO> Orders { get; set; }
 }
